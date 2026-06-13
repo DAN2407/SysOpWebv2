@@ -1,0 +1,1004 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del simulador interactivo de gestión de memoria con algoritmos Worst Fit y Best Fit">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+        <link rel="canonical" href="https://github.com/DAN2407/SysOpWebv2/guia-uso/">
+      
+      
+        <link rel="prev" href="../algoritmos/best-fit/">
+      
+      
+        <link rel="next" href="../referencia/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Guía de Uso - Simulador de Algoritmos de Memoria</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-uso" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Simulador de Algoritmos de Memoria" class="md-header__button md-logo" aria-label="Simulador de Algoritmos de Memoria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Simulador de Algoritmos de Memoria
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía de Uso
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../algoritmos/worst-fit/" class="md-tabs__link">
+          
+  
+  
+  Algoritmos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guía de Uso
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../referencia/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencia Técnica
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Simulador de Algoritmos de Memoria" class="md-nav__button md-logo" aria-label="Simulador de Algoritmos de Memoria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Simulador de Algoritmos de Memoria
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algoritmos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algoritmos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algoritmos/worst-fit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peor Ajuste (Worst Fit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algoritmos/best-fit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mejor Ajuste (Best Fit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía de Uso
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía de Uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#panel-de-controles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel de controles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Panel de controles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-algoritmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seleccionar algoritmo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-un-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agregar un proceso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liberar-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liberar memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-tamano-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cambiar tamaño de memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecutar-una-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejecutar una Demo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejecutar una Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlar-la-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlar la demo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leer-la-visualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer la visualización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leer-las-estadisticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer las estadísticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencia Técnica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#panel-de-controles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel de controles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Panel de controles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-algoritmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seleccionar algoritmo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-un-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agregar un proceso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liberar-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liberar memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-tamano-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cambiar tamaño de memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecutar-una-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejecutar una Demo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejecutar una Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlar-la-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlar la demo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leer-la-visualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer la visualización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leer-las-estadisticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer las estadísticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-de-uso">Guía de Uso</h1>
+<p>Esta guía te explica cómo interactuar con el simulador paso a paso.</p>
+<p><img alt="Controles del simulador" src="../img/simulador.svg" /></p>
+<h2 id="panel-de-controles">Panel de controles</h2>
+<h3 id="seleccionar-algoritmo">Seleccionar algoritmo</h3>
+<p>Usa el menú desplegable <strong>Algoritmo</strong> para cambiar entre:</p>
+<ul>
+<li><strong>Peor Ajuste (Worst Fit)</strong> — asigna al bloque más grande disponible</li>
+<li><strong>Mejor Ajuste (Best Fit)</strong> — asigna al bloque más pequeño suficiente</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Cambio en caliente</p>
+<p>Puedes cambiar el algoritmo en cualquier momento, incluso con procesos activos.
+Las nuevas asignaciones usarán el algoritmo recién seleccionado.</p>
+</div>
+<h3 id="agregar-un-proceso">Agregar un proceso</h3>
+<ol>
+<li>Escribe el <strong>tamaño</strong> en el campo numérico (unidades de memoria)</li>
+<li>Haz clic en <strong>Agregar</strong> o presiona <code>Enter</code></li>
+<li>El simulador asignará el proceso según el algoritmo activo</li>
+<li>Si no hay espacio suficiente, aparecerá una alerta</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Límite de memoria</p>
+<p>Si el tamaño solicitado supera el mayor bloque libre disponible,
+la asignación fallará y se registrará en el historial.</p>
+</div>
+<h3 id="liberar-memoria">Liberar memoria</h3>
+<table>
+<thead>
+<tr>
+<th>Botón</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Liberar Aleatorio</strong></td>
+<td>Libera un proceso al azar de los activos</td>
+</tr>
+<tr>
+<td><strong>Limpiar Todo</strong></td>
+<td>Reinicia la memoria completamente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cambiar-tamano-de-memoria">Cambiar tamaño de memoria</h3>
+<ol>
+<li>Escribe el nuevo tamaño en el campo <strong>Memoria</strong></li>
+<li>Haz clic en <strong>Aplicar Tamaño</strong></li>
+<li>La memoria se reiniciará con el nuevo tamaño</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Tamaños recomendados</p>
+<ul>
+<li>Para demos rápidas: 20–50 unidades</li>
+<li>Para explorar fragmentación: 100–200 unidades</li>
+<li>Para carga alta: 500–1000 unidades</li>
+</ul>
+</div>
+<hr />
+<h2 id="ejecutar-una-demo">Ejecutar una Demo</h2>
+<p>Las demos automatizan la inserción de varios procesos en secuencia para que
+puedas observar el comportamiento del algoritmo sin intervención manual.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Demo Pequeños</label><label for="__tabbed_1_2">Demo Grandes</label><label for="__tabbed_1_3">Demo Mezclados</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Secuencia: [2, 1, 3, 2, 1, 3, 2, 1, 2, 3]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Uso: Ver cómo se llena la memoria con procesos chicos
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Ideal para: comparar fragmentación entre algoritmos
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Secuencia: [10, 8, 12, 9, 11]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Uso: Observar asignación con procesos que consumen mucho espacio
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Ideal para: ver diferencia entre Worst y Best con pocos bloques
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Secuencia: [8, 2, 6, 1, 10, 3, 4, 7, 2, 5]
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Uso: Escenario realista con variedad de tamaños
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Ideal para: el análisis más completo de ambos algoritmos
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="controlar-la-demo">Controlar la demo</h3>
+<ul>
+<li><strong>Pausar Demo</strong>: congela la ejecución en el paso actual</li>
+<li><strong>Reanudar Demo</strong>: continúa desde donde se pausó</li>
+<li>El panel de estado muestra si la demo está <em>ejecutando</em> o <em>pausada</em></li>
+</ul>
+<hr />
+<h2 id="leer-la-visualizacion">Leer la visualización</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│  P1  P1  P1  □  □  P2  P2  □  □  □  P3 │
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>      ↑              ↑           ↑
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  Ocupado          Libre      Ocupado
+</code></pre></div>
+<ul>
+<li>Celdas <strong>de color</strong> → ocupadas por un proceso (cada proceso tiene su propio color)</li>
+<li>Celdas <strong>azul claro punteado</strong> (□) → libres</li>
+<li>Pasa el cursor sobre cualquier celda para ver su posición exacta</li>
+</ul>
+<h2 id="leer-las-estadisticas">Leer las estadísticas</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Peor Ajuste | Usado: 23/50 (46%) | Fragmentación: 4 | Mayor bloque: 12
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Usado</strong></td>
+<td>Unidades ocupadas / total</td>
+</tr>
+<tr>
+<td><strong>Fragmentación</strong></td>
+<td>Cantidad de bloques libres separados</td>
+</tr>
+<tr>
+<td><strong>Mayor bloque</strong></td>
+<td>Tamaño del fragmento libre más grande disponible</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Usar la fragmentación como métrica</p>
+<p>Un valor de fragmentación alto con un "Mayor bloque" pequeño indica que la memoria
+está muy fragmentada: hay mucho espacio libre pero inutilizable.
+Compara este valor entre Worst Fit y Best Fit con la misma demo.</p>
+</div>
+<hr />
+<p>Continúa con la <a href="../referencia/">Referencia Técnica</a> para detalles de implementación.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "content.code.copy", "navigation.top", "navigation.tabs", "navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

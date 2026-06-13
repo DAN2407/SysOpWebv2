@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Algoritmos de Memoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Simulador de Algoritmos de Memoria 2026</h1>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="algorithm">Algoritmo:</label>
+                <select id="algorithm">
+                    <option value="worst">Peor Ajuste (Worst Fit)</option>
+                    <option value="best">Mejor Ajuste (Best Fit)</option>
+                </select>
+                
+                <label for="processSize">Tamaño:</label>
+                <input type="number" id="processSize" value="5" min="1" max="500">
+                
+                <button id="addProcess">Agregar</button>
+                <button id="freeRandom">Liberar Aleatorio</button>
+                <button id="clearAll">Limpiar Todo</button>
+                
+                <label for="memorySize">Memoria:</label>
+                <input type="number" id="memorySize" value="50" min="10" max="1000">
+                <button id="applySize">Aplicar Tamaño</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <label>Demos:</label>
+            <button class="demo-btn" data-sizes="[2,1,3,2,1,3,2,1,2,3]">Pequeños</button>
+            <button class="demo-btn" data-sizes="[10,8,12,9,11]">Grandes</button>
+            <button class="demo-btn" data-sizes="[8,2,6,1,10,3,4,7,2,5]">Mezclados</button>
+            
+            <div class="demo-controls">
+                <button id="pauseDemo" disabled>Pausar Demo</button>
+                <span id="demoStatus">Listo</span>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div id="infoLabel">Listo</div>
+        </div>
+
+        <div class="memory-display">
+            <div id="memoryCanvas"></div>
+        </div>
+
+        <div class="stats-panel">
+            <div id="statsLabel">Peor Ajuste | Usado: 0/50 (0%) | Fragmentación: 1 | Mayor: 50</div>
+        </div>
+
+        <div class="text-panels">
+            <div class="panel">
+                <h3>Procesos Activos:</h3>
+                <div id="processesText" class="text-area"></div>
+            </div>
+            <div class="panel">
+                <h3>Historial:</h3>
+                <div id="historyText" class="text-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

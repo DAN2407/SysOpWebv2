@@ -1,0 +1,37 @@
+site_name: Simulador de Algoritmos de Memoria
+site_url: https://github.com/DAN2407/SysOpWebv2
+site_description: Documentación del simulador interactivo de gestión de memoria con algoritmos Worst Fit y Best Fit
+site_author: Tu Nombre
+
+theme:
+  name: material
+  language: es
+  palette:
+    primary: deep purple
+    accent: purple
+  features:
+    - content.tabs.link
+    - content.code.copy
+    - navigation.top
+    - navigation.tabs
+    - navigation.sections
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+
+nav:
+  - Inicio: index.md
+  - Algoritmos:
+      - Peor Ajuste (Worst Fit): algoritmos/worst-fit.md
+      - Mejor Ajuste (Best Fit): algoritmos/best-fit.md
+  - Guía de Uso: guia-uso.md
+  - Referencia Técnica: referencia.md
